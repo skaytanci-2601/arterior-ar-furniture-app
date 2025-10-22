@@ -1,0 +1,160 @@
+{
+  "categories": [
+    {
+      "id": "seating",
+      "name": "Seating",
+      "items": [
+        {
+          "id": "chair_001",
+          "name": "Minimal Chair",
+          "modelPath": "Arterior/Models/chair.glb",
+          "thumbnailPath": "Arterior/Thumbnails/chair.png",
+          "dimensionsCm": {"x": 55, "y": 85, "z": 55},
+          "price": 79.99,
+          "buyUrl": "https://example.com/chair-001"
+        },
+        {
+          "id": "sofa_001",
+          "name": "Modern Sofa",
+          "modelPath": "Arterior/Models/sofa.glb",
+          "thumbnailPath": "Arterior/Thumbnails/sofa.png",
+          "dimensionsCm": {"x": 200, "y": 80, "z": 90},
+          "price": 599.99,
+          "buyUrl": "https://example.com/sofa-001"
+        },
+        {
+          "id": "chair_002",
+          "name": "Office Chair",
+          "modelPath": "Arterior/Models/office_chair.glb",
+          "thumbnailPath": "Arterior/Thumbnails/office_chair.png",
+          "dimensionsCm": {"x": 60, "y": 120, "z": 60},
+          "price": 199.99,
+          "buyUrl": "https://example.com/office-chair-002"
+        }
+      ]
+    },
+    {
+      "id": "tables",
+      "name": "Tables",
+      "items": [
+        {
+          "id": "table_001",
+          "name": "Coffee Table",
+          "modelPath": "Arterior/Models/coffee_table.glb",
+          "thumbnailPath": "Arterior/Thumbnails/coffee_table.png",
+          "dimensionsCm": {"x": 120, "y": 45, "z": 60},
+          "price": 199.99,
+          "buyUrl": "https://example.com/coffee-table-001"
+        },
+        {
+          "id": "table_002",
+          "name": "Dining Table",
+          "modelPath": "Arterior/Models/dining_table.glb",
+          "thumbnailPath": "Arterior/Thumbnails/dining_table.png",
+          "dimensionsCm": {"x": 150, "y": 75, "z": 90},
+          "price": 399.99,
+          "buyUrl": "https://example.com/dining-table-002"
+        },
+        {
+          "id": "table_003",
+          "name": "Side Table",
+          "modelPath": "Arterior/Models/side_table.glb",
+          "thumbnailPath": "Arterior/Thumbnails/side_table.png",
+          "dimensionsCm": {"x": 50, "y": 60, "z": 50},
+          "price": 89.99,
+          "buyUrl": "https://example.com/side-table-003"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "Storage",
+      "items": [
+        {
+          "id": "cabinet_001",
+          "name": "Storage Cabinet",
+          "modelPath": "Arterior/Models/cabinet.glb",
+          "thumbnailPath": "Arterior/Thumbnails/cabinet.png",
+          "dimensionsCm": {"x": 80, "y": 180, "z": 40},
+          "price": 299.99,
+          "buyUrl": "https://example.com/cabinet-001"
+        },
+        {
+          "id": "bookshelf_001",
+          "name": "Bookshelf",
+          "modelPath": "Arterior/Models/bookshelf.glb",
+          "thumbnailPath": "Arterior/Thumbnails/bookshelf.png",
+          "dimensionsCm": {"x": 100, "y": 200, "z": 30},
+          "price": 249.99,
+          "buyUrl": "https://example.com/bookshelf-001"
+        }
+      ]
+    },
+    {
+      "id": "lighting",
+      "name": "Lighting",
+      "items": [
+        {
+          "id": "lamp_001",
+          "name": "Floor Lamp",
+          "modelPath": "Arterior/Models/floor_lamp.glb",
+          "thumbnailPath": "Arterior/Thumbnails/floor_lamp.png",
+          "dimensionsCm": {"x": 30, "y": 160, "z": 30},
+          "price": 129.99,
+          "buyUrl": "https://example.com/floor-lamp-001"
+        },
+        {
+          "id": "lamp_002",
+          "name": "Table Lamp",
+          "modelPath": "Arterior/Models/table_lamp.glb",
+          "thumbnailPath": "Arterior/Thumbnails/table_lamp.png",
+          "dimensionsCm": {"x": 25, "y": 50, "z": 25},
+          "price": 79.99,
+          "buyUrl": "https://example.com/table-lamp-002"
+        },
+        {
+          "id": "lamp_003",
+          "name": "Pendant Light",
+          "modelPath": "Arterior/Models/pendant_light.glb",
+          "thumbnailPath": "Arterior/Thumbnails/pendant_light.png",
+          "dimensionsCm": {"x": 40, "y": 20, "z": 40},
+          "price": 149.99,
+          "buyUrl": "https://example.com/pendant-light-003"
+        }
+      ]
+    },
+    {
+      "id": "rugs",
+      "name": "Rugs",
+      "items": [
+        {
+          "id": "rug_001",
+          "name": "Area Rug",
+          "modelPath": "Arterior/Models/area_rug.glb",
+          "thumbnailPath": "Arterior/Thumbnails/area_rug.png",
+          "dimensionsCm": {"x": 200, "y": 1, "z": 300},
+          "price": 89.99,
+          "buyUrl": "https://example.com/area-rug-001"
+        },
+        {
+          "id": "rug_002",
+          "name": "Round Rug",
+          "modelPath": "Arterior/Models/round_rug.glb",
+          "thumbnailPath": "Arterior/Thumbnails/round_rug.png",
+          "dimensionsCm": {"x": 150, "y": 1, "z": 150},
+          "price": 69.99,
+          "buyUrl": "https://example.com/round-rug-002"
+        },
+        {
+          "id": "rug_003",
+          "name": "Runner Rug",
+          "modelPath": "Arterior/Models/runner_rug.glb",
+          "thumbnailPath": "Arterior/Thumbnails/runner_rug.png",
+          "dimensionsCm": {"x": 80, "y": 1, "z": 200},
+          "price": 49.99,
+          "buyUrl": "https://example.com/runner-rug-003"
+        }
+      ]
+    }
+  ]
+}

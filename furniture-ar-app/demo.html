@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arterior - AR Furniture Placement App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .tech-stack h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .tech-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .cta h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Arterior</h1>
+            <p>AR Furniture Placement App</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>📱 AR Plane Detection</h3>
+                <p>Advanced horizontal plane detection with visual grid overlay for accurate furniture placement.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🪑 3D Object Placement</h3>
+                <p>Tap to place furniture models on detected surfaces with intuitive gesture controls.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🎨 Object Manipulation</h3>
+                <p>Move, scale, and rotate placed objects with smooth touch gestures and visual feedback.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🛍️ Product Catalog</h3>
+                <p>Browse furniture categories with detailed product information and external purchase links.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>💾 Save & Load</h3>
+                <p>Save your room designs and restore them later with persistent storage.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📸 Screenshot</h3>
+                <p>Capture and share your AR furniture arrangements with built-in screenshot functionality.</p>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Unity 2022 LTS</h4>
+                    <p>Cross-platform game engine</p>
+                </div>
+                <div class="tech-item">
+                    <h4>AR Foundation</h4>
+                    <p>Unity's AR framework</p>
+                </div>
+                <div class="tech-item">
+                    <h4>ARKit (iOS)</h4>
+                    <p>Apple's AR platform</p>
+                </div>
+                <div class="tech-item">
+                    <h4>ARCore (Android)</h4>
+                    <p>Google's AR platform</p>
+                </div>
+                <div class="tech-item">
+                    <h4>C#</h4>
+                    <p>Primary programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Unity UI</h4>
+                    <p>User interface system</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2>🚀 Ready to Build?</h2>
+            <p>Get started with the Arterior AR furniture placement app. Follow the setup guide to create your own AR interior design experience.</p>
+            <a href="README.md" class="btn">📖 View Documentation</a>
+            <a href="QUICKSTART.md" class="btn">⚡ Quick Start</a>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2024 Arterior AR App. Built with Unity and AR Foundation.</p>
+        </div>
+    </div>
+</body>
+</html>

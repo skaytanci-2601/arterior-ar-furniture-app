@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arterior - Web AR Furniture App</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+        }
+        
+        .ui-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .furniture-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+        
+        .furniture-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .furniture-btn:active {
+            transform: translateY(0);
+        }
+        
+        .status {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .instructions {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .clear-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .furniture-info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .furniture-info h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        
+        .furniture-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .close-info {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 480px) {
+            .furniture-btn {
+                padding: 10px 15px;
+                margin: 3px;
+                font-size: 14px;
+            }
+            
+            .ui-panel {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AR Scene -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <!-- Camera -->
+        <a-camera gps-camera rotation-reader></a-camera>
+        
+        <!-- Furniture Models -->
+        <a-box id="chair" position="0 0.5 -1" material="color: #8B4513" scale="0.5 1 0.5" visible="false"></a-box>
+        <a-box id="table" position="0 0.25 -1" material="color: #654321" scale="1 0.5 1" visible="false"></a-box>
+        <a-box id="sofa" position="0 0.4 -1" material="color: #4169E1" scale="2 0.8 1" visible="false"></a-box>
+        <a-box id="lamp" position="0 0.8 -1" material="color: #FFD700" scale="0.3 1.6 0.3" visible="false"></a-box>
+        
+        <!-- AR Marker -->
+        <a-marker-camera preset="hiro">
+            <a-box position="0 0.5 0" material="color: yellow"></a-box>
+        </a-marker-camera>
+    </a-scene>
+
+    <!-- Furniture Info Panel -->
+    <div class="furniture-info" id="furnitureInfo" style="display: none;">
+        <button class="close-info" onclick="closeInfo()">&times;</button>
+        <h3 id="infoTitle">Furniture Info</h3>
+        <p id="infoDimensions">Dimensions: </p>
+        <p id="infoPrice">Price: </p>
+        <p id="infoDescription">Description: </p>
+        <button class="furniture-btn" onclick="buyFurniture()" style="margin-top: 10px;">🛒 Buy Now</button>
+    </div>
+
+    <!-- UI Panel -->
+    <div class="ui-panel">
+        <div class="status" id="status">📱 Point camera at AR marker to start</div>
+        <div class="instructions">Print or display the AR marker on another device</div>
+        
+        <div class="button-row">
+            <button class="furniture-btn" onclick="placeFurniture('chair')">🪑 Chair</button>
+            <button class="furniture-btn" onclick="placeFurniture('table')">🪑 Table</button>
+            <button class="furniture-btn" onclick="placeFurniture('sofa')">🛋️ Sofa</button>
+            <button class="furniture-btn" onclick="placeFurniture('lamp')">💡 Lamp</button>
+        </div>
+        
+        <button class="furniture-btn clear-btn" onclick="clearFurniture()">🗑️ Clear All</button>
+    </div>
+
+    <script>
+        let currentFurniture = null;
+        let furnitureData = {
+            chair: {
+                name: 'Modern Chair',
+                dimensions: '55 × 85 × 55 cm',
+                price: '$79.99',
+                description: 'Comfortable modern chair perfect for any room',
+                buyUrl: 'https://example.com/chair'
+            },
+            table: {
+                name: 'Coffee Table',
+                dimensions: '120 × 45 × 60 cm',
+                price: '$199.99',
+                description: 'Elegant coffee table with clean lines',
+                buyUrl: 'https://example.com/table'
+            },
+            sofa: {
+                name: 'Modern Sofa',
+                dimensions: '200 × 80 × 90 cm',
+                price: '$599.99',
+                description: 'Spacious 3-seater sofa in premium fabric',
+                buyUrl: 'https://example.com/sofa'
+            },
+            lamp: {
+                name: 'Floor Lamp',
+                dimensions: '30 × 160 × 30 cm',
+                price: '$129.99',
+                description: 'Adjustable floor lamp with LED lighting',
+                buyUrl: 'https://example.com/lamp'
+            }
+        };
+        
+        function placeFurniture(type) {
+            // Hide current furniture
+            if (currentFurniture) {
+                currentFurniture.setAttribute('visible', false);
+            }
+            
+            // Show selected furniture
+            const furniture = document.getElementById(type);
+            furniture.setAttribute('visible', true);
+            currentFurniture = furniture;
+            
+            // Update status
+            document.getElementById('status').textContent = `✅ ${furnitureData[type].name} placed!`;
+            
+            // Show furniture info
+            showFurnitureInfo(type);
+        }
+        
+        function showFurnitureInfo(type) {
+            const info = furnitureData[type];
+            document.getElementById('infoTitle').textContent = info.name;
+            document.getElementById('infoDimensions').textContent = `Dimensions: ${info.dimensions}`;
+            document.getElementById('infoPrice').textContent = `Price: ${info.price}`;
+            document.getElementById('infoDescription').textContent = `Description: ${info.description}`;
+            document.getElementById('furnitureInfo').style.display = 'block';
+        }
+        
+        function closeInfo() {
+            document.getElementById('furnitureInfo').style.display = 'none';
+        }
+        
+        function buyFurniture() {
+            if (currentFurniture) {
+                const furnitureId = currentFurniture.id;
+                const buyUrl = furnitureData[furnitureId].buyUrl;
+                window.open(buyUrl, '_blank');
+            }
+        }
+        
+        function clearFurniture() {
+            if (currentFurniture) {
+                currentFurniture.setAttribute('visible', false);
+                currentFurniture = null;
+                document.getElementById('status').textContent = '🗑️ Furniture cleared';
+                closeInfo();
+            }
+        }
+        
+        // Handle AR marker detection
+        document.addEventListener('markerFound', function() {
+            document.getElementById('status').textContent = '🎉 AR marker detected! Select furniture to place.';
+        });
+        
+        document.addEventListener('markerLost', function() {
+            document.getElementById('status').textContent = '📱 AR marker lost. Point camera at marker.';
+        });
+        
+        // Handle device orientation
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 100);
+        });
+        
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

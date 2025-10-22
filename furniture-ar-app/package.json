@@ -1,0 +1,43 @@
+{
+  "name": "arterior-ar-furniture-app",
+  "version": "1.0.0",
+  "description": "AR furniture placement mobile app built with Unity",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Use Unity to build the project'",
+    "test": "echo 'Run tests in Unity'",
+    "deploy": "echo 'Deploy using Unity Build Settings'"
+  },
+  "keywords": [
+    "unity",
+    "ar",
+    "augmented-reality",
+    "furniture",
+    "mobile",
+    "ios",
+    "android",
+    "arkit",
+    "arcore"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/arterior-ar-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/arterior-ar-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/arterior-ar-app#readme",
+  "unity": {
+    "version": "2022.3.0f1",
+    "packages": [
+      "com.unity.xr.arfoundation@5.0.0",
+      "com.unity.xr.arkit@5.0.0",
+      "com.unity.xr.arcore@5.0.0",
+      "com.unity.xr.management@4.4.0"
+    ]
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
